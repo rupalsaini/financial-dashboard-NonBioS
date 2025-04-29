@@ -8,13 +8,13 @@ import MarketNews from './widgets/MarketNews';
 
 const Dashboard = () => {
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
       <Sidebar />
       
       <div className="flex-1">
-        <header className="bg-white shadow-sm">
+        <header className="bg-white dark:bg-gray-800 shadow-sm transition-colors duration-200">
           <div className="px-6 py-4">
-            <h1 className="text-2xl font-bold text-gray-900">Market Dashboard</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Market Dashboard</h1>
           </div>
         </header>
 

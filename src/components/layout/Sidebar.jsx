@@ -1,60 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Sidebar = () => {
-  const [activeItem, setActiveItem] = useState('Dashboard');
-  
   const menuItems = [
-    { name: 'Dashboard', icon: '📊', path: '/dashboard' },
-    { name: 'Stocks', icon: '📈', path: '/stocks' },
-    { name: 'Markets', icon: '🏢', path: '/markets' },
-    { name: 'Commodities', icon: '💎', path: '/commodities' },
-    { name: 'Global', icon: '🌍', path: '/global' },
-    { name: 'Portfolio', icon: '📁', path: '/portfolio' },
-    { name: 'Performance', icon: '📊', path: '/performance' },
-    { name: 'Analytics', icon: '📉', path: '/analytics' },
-    { name: 'Settings', icon: '⚙️', path: '/settings' }
+    { name: 'Dashboard', icon: '📊' },
+    { name: 'Portfolio', icon: '💼' },
+    { name: 'Watchlist', icon: '👀' },
+    { name: 'Markets', icon: '📈' },
+    { name: 'News', icon: '📰' },
+    { name: 'Settings', icon: '⚙️' }
   ];
 
-  const handleItemClick = (itemName) => {
-    setActiveItem(itemName);
-  };
-
   return (
-    <aside className="bg-gray-900 text-white w-64 min-h-screen p-4">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-center">
-          Market Dashboard
+    <div className="w-64 bg-white dark:bg-gray-800 shadow-md transition-colors duration-200">
+      <div className="p-6">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+          FinDash
         </h1>
+        <nav>
+          <ul className="space-y-2">
+            {menuItems.map((item, index) => (
+              <li key={index}>
+                <a
+                  href="#"
+                  className={`
+                    flex items-center px-4 py-3 text-gray-700 dark:text-gray-200
+                    rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700
+                    transition-colors duration-150
+                    ${index === 0 ? 'bg-gray-100 dark:bg-gray-700' : ''}
+                  `}
+                >
+                  <span className="mr-3">{item.icon}</span>
+                  <span>{item.name}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <ul className="space-y-2">
-          {menuItems.map((item, index) => (
-            <li key={index}>
-              <button
-                onClick={() => handleItemClick(item.name)}
-                className={`w-full flex items-center space-x-3 p-3 rounded transition-colors ${
-                  activeItem === item.name 
-                    ? 'bg-blue-600 text-white' 
-                    : 'hover:bg-gray-800 text-gray-300'
-                }`}
-              >
-                <span className="text-xl">{item.icon}</span>
-                <span className="flex-1 text-left">{item.name}</span>
-                {activeItem === item.name && (
-                  <span className="h-2 w-2 rounded-full bg-white"/>
-                )}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div className="absolute bottom-0 left-0 w-64 p-4 bg-gray-900">
-        <div className="flex items-center space-x-3 p-3 rounded hover:bg-gray-800">
-          <span className="text-xl">👤</span>
-          <span className="text-sm text-gray-300">User Profile</span>
+      
+      <div className="absolute bottom-0 w-64 p-6 border-t border-gray-200 dark:border-gray-700">
+        <div className="flex items-center">
+          <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600"></div>
+          <div className="ml-3">
+            <p className="text-sm font-medium text-gray-900 dark:text-white">Rupal Saini</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Premium Account</p>
+          </div>
         </div>
       </div>
-    </aside>
+    </div>
   );
 };
 
